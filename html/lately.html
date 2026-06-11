@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>최근 변경 - 백룸위키</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/lately.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="http://127.0.0.1:5500/html/wiki.html" class="logo">
+                <i class="fa-solid fa-diagram-project"></i>
+                <span>백룸위키</span>
+            </a>
+            <ul class="menu">
+                <li><a href="http://127.0.0.1:5500/lately.html"><i class="fa-solid fa-clock-rotate-left"></i> 최근 변경</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="nav-right">
+            <a href="#">
+                <button class="random-btn">
+                    <i class="fa-solid fa-shuffle"></i>
+                </button>
+            </a>
+
+            <div class="search-box" id="search-box-container" style="position: relative;">
+                <input type="text" id="search-input" placeholder="여기에서 검색" autocomplete="off">
+                <i class="fa-solid fa-magnifying-glass" id="search-btn"></i>
+                <i class="fa-solid fa-arrow-right"></i>
+
+                <ul class="search-suggestions" id="search-suggestions"></ul>
+            </div>
+            <a href="http://127.0.0.1:5500/login.html">
+                <i class="fa-solid fa-user nav-icon"></i>
+            </a>
+        </div>
+    </nav>
+
+    <div class="main">
+        <div class="recent-container">
+            <h1>최근 변경기록</h1>
+            <p class="recent-desc">위키의 최근 수정 내역을 보여줍니다. (실시간 업데이트)</p>
+
+            <table class="recent-table">
+                <thead>
+                    <tr>
+                        <th class="col-doc">문서명</th>
+                        <th class="col-status">상태</th>
+                        <th class="col-user">수정자</th>
+                        <th class="col-time">수정 시간</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-doc"><a href="con_ex.html">레벨 0</a></td>
+                        <td class="col-status"><span class="badge badge-edit">수정</span> <span
+                                class="diff diff-plus">+120</span></td>
+                        <td class="col-user">방랑자_402</td>
+                        <td class="col-time">23:21:45</td>
+                    </tr>
+                    <tr>
+                        <td class="col-doc"><a href="#">아몬드 워터</a></td>
+                        <td class="col-status"><span class="badge badge-edit">수정</span> <span
+                                class="diff diff-minus">-15</span></td>
+                        <td class="col-user">MEG_Agent_K</td>
+                        <td class="col-time">23:18:12</td>
+                    </tr>
+                    <tr>
+                        <td class="col-doc"><a href="#">엔티티 3: 스마일러</a></td>
+                        <td class="col-status"><span class="badge badge-new">신설</span> <span
+                                class="diff diff-plus">+4500</span></td>
+                        <td class="col-user">Unknown_IP</td>
+                        <td class="col-time">23:05:01</td>
+                    </tr>
+                    <tr>
+                        <td class="col-doc"><a href="#">레벨 펀 (Level Fun)</a></td>
+                        <td class="col-status"><span class="badge badge-delete">삭제</span> <span
+                                class="diff diff-minus">-8200</span></td>
+                        <td class="col-user" style="color:#f44336;">=)</td>
+                        <td class="col-time">22:59:30</td>
+                    </tr>
+                    <tr>
+                        <td class="col-doc"><a href="#">전방의 방 (The Frontrooms)</a></td>
+                        <td class="col-status"><span class="badge badge-edit">수정</span> <span
+                                class="diff diff-plus">+42</span></td>
+                        <td class="col-user">Noclip_Survivor</td>
+                        <td class="col-time">22:45:11</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+<script>
+    // --- 기존 실시간 인기 검색어 코드 (유지) ---
+    // (기존 updateRanking 등등의 코드는 그대로 두세요!)
+
+    // --- 새로 추가된 검색 및 자동완성 코드 ---
+    const searchInput = document.getElementById('search-input');
+    const searchBtn = document.getElementById('search-btn');
+    const suggestionsBox = document.getElementById('search-suggestions');
+    const searchContainer = document.getElementById('search-box-container');
+
+    // 검색 가능한 문서 목록 (원하는 대로 추가 가능)
+    const wikiData = [
+        "레벨 0", "아몬드 워터", "엔티티", "스마일러", "노클립",
+        "백룸 탈출", "파티고어", "프론트룸", "레벨 1", "레벨 2",
+        "전방의 방", "MEG", "가짜 창문"
+    ];
+
+    // 1) 페이지 이동 함수
+    function goToSearch() {
+        const query = searchInput.value.trim().replace(/\s+/g, ''); // 띄어쓰기 무시 ("레벨 0" -> "레벨0")
+
+        if (query === "레벨0") {
+            // 레벨0 검색 시 지정된 링크로 이동
+            window.location.href = "http://127.0.0.1:5500/con_ex.html";
+        } else if (query !== "") {
+            alert("아직 작성되지 않은 문서입니다: " + searchInput.value);
+            // 만약 검색어별로 다른 페이지를 만들게 되면 여기에 else if 로 추가하시면 됩니다.
+        }
+    }
+
+    // 2) 돋보기 아이콘 클릭 시 검색 실행
+    searchBtn.addEventListener('click', goToSearch);
+
+    // 3) 엔터 키 누를 시 검색 실행
+    searchInput.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            goToSearch();
+        }
+    });
+
+    // 4) 타자 칠 때마다 드롭다운에 일치하는 단어 보여주기
+    searchInput.addEventListener('input', function () {
+        const val = this.value.trim().replace(/\s+/g, '');
+        suggestionsBox.innerHTML = ''; // 드롭다운 초기화
+
+        if (val.length > 0) {
+            // 입력한 글자가 포함된 단어 찾기 (띄어쓰기 무시)
+            const filtered = wikiData.filter(item =>
+                item.replace(/\s+/g, '').includes(val)
+            );
+
+            if (filtered.length > 0) {
+                suggestionsBox.style.display = 'block';
+                filtered.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item; // 예: "레벨 0" 표시
+
+                    // 드롭다운에서 단어를 클릭했을 때
+                    li.addEventListener('click', function () {
+                        searchInput.value = item;
+                        suggestionsBox.style.display = 'none';
+                        goToSearch(); // 클릭하면 바로 이동하게 하려면 활성화
+                    });
+
+                    suggestionsBox.appendChild(li);
+                });
+            } else {
+                suggestionsBox.style.display = 'none'; // 일치하는 거 없으면 닫기
+            }
+        } else {
+            suggestionsBox.style.display = 'none'; // 지워서 빈칸되면 닫기
+        }
+    });
+
+    // 5) 검색창 바깥 아무데나 클릭하면 드롭다운 닫히게 하기
+    document.addEventListener('click', function (e) {
+        if (!searchContainer.contains(e.target)) {
+            suggestionsBox.style.display = 'none';
+        }
+    });
+</script>
+
+</html>

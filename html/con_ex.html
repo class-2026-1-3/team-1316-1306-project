@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레벨 0 - 백룸위키</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/con_ex.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="http://127.0.0.1:5500/html/wiki.html" class="logo">
+                <i class="fa-solid fa-diagram-project"></i>
+                <span>백룸위키</span>
+            </a>
+            <ul class="menu">
+                <li><a href="http://127.0.0.1:5500/html/lately.html"><i class="fa-solid fa-clock-rotate-left"></i> 최근 변경</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="nav-right">
+            <a href="#">
+                <button class="random-btn">
+                    <i class="fa-solid fa-shuffle"></i>
+                </button>
+            </a>
+
+            <div class="search-box" id="search-box-container" style="position: relative;">
+                <input type="text" id="search-input" placeholder="여기에서 검색" autocomplete="off">
+                <i class="fa-solid fa-magnifying-glass" id="search-btn"></i>
+                <i class="fa-solid fa-arrow-right"></i>
+
+                <ul class="search-suggestions" id="search-suggestions"></ul>
+            </div>
+            <a href="http://127.0.0.1:5500/html/login.html">
+                <i class="fa-solid fa-user nav-icon"></i>
+            </a>
+        </div>
+    </nav>
+
+    <div class="main">
+
+        <div class="contact">
+            <h1>레벨 0 (Level 0)</h1>
+
+            <table class="wiki-infobox">
+                <thead>
+                    <tr>
+                        <th colspan="2" class="infobox-name">레벨 0: "로비" (The Lobby)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="2" class="infobox-image">
+                            <img src="level0.jpg" alt="레벨 0 이미지">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="infobox-label">생존 등급</td>
+                        <td class="infobox-value" style="color: #4caf50; font-weight: bold;">Class 1</td>
+                    </tr>
+                    <tr>
+                        <td class="infobox-label">안전성</td>
+                        <td class="infobox-value">안전함</td>
+                    </tr>
+                    <tr>
+                        <td class="infobox-label">엔티티 수</td>
+                        <td class="infobox-value">최소 미만</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>백룸의 첫 번째 레벨이자 가장 널리 알려진 공간입니다. 현실 세계에서 우연히 벽이나 바닥을 통해 물리 엔진 오류처럼 빠져나가는 현상인
+                <strong>"노클립(Noclip)"</strong>이 발생하면 대부분 이곳으로 처음 떨어지게 됩니다.</p>
+
+            <div class="wiki-toc">
+                <div class="toc-title">목차</div>
+                <ul>
+                    <li><a href="#sec-1">1. 개요</a></li>
+                    <li><a href="#sec-2">2. 특징</a></li>
+                    <li><a href="#sec-3">3. 생존 가이드</a></li>
+                </ul>
+            </div>
+
+            <h2 id="sec-1">1. 개요</h2>
+            <p>이 공간은 끝없이 펼쳐진 빈 방들과 변색된 노란색 벽지, 그리고 축축하고 낡은 카펫이 무한히 반복되는 오피스 빌딩의 형태를 띠고 있습니다. 구조가 고정되어 있지 않고 실시간으로 변하기
+                때문에 나침반이나 지도 조작이 불가능합니다.</p>
+
+            <h2 id="sec-2">2. 특징</h2>
+            <p>오래된 오피스용 형광등이 사방에서 일정한 주파수로 웅웅거리는 기분 나쁜 백색 소음을 냅니다. 이 소리에 오랜 시간 노출되면 정신을 잃거나 환청을 듣기 쉬우므로 주의해야 합니다. 기본적으로
+                인간을 해치는 괴생명체(엔티티)는 거의 발견되지 않습니다.</p>
+
+            <h2 id="sec-3">3. 생존 가이드</h2>
+            <p>극도의 고립감 때문에 미쳐버릴 수 있으므로, 탈출구를 찾지 못했다면 소지하고 있는 아몬드 워터를 주기적으로 마셔 정신력(Sanity)을 유지해야 합니다. 다른 방랑자를 만나더라도 환각일
+                확률이 높으니 거리를 두는 것이 안전합니다.</p>
+        </div>
+
+        <div class="mvd">
+            <div class="realtime-header">
+                <span>실시간 인기 검색어</span>
+                <i class="fa-solid fa-rotate-right" style="font-size: 14px; cursor:pointer;"
+                    onclick="updateRanking()"></i>
+            </div>
+            <ul class="realtime-list" id="realtime-container">
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const searchKeywords = [
+            "레벨 0", "아몬드 워터", "엔티티", "스마일러", "노클립",
+            "백룸 탈출", "파티고어", "프론트룸", "레벨 1", "레벨 2",
+            "전방의 방", "MEG", "가짜 창문"
+        ];
+
+        const statuses = [
+            { type: "up", icon: "▲" },
+            { type: "down", icon: "▼" },
+            { type: "keep", icon: "-" },
+            { type: "new", icon: "NEW" }
+        ];
+
+        function updateRanking() {
+            const container = document.getElementById("realtime-container");
+            if (!container) return;
+            container.innerHTML = "";
+
+            let shuffled = [...searchKeywords].sort(() => 0.5 - Math.random());
+
+            for (let i = 0; i < 10; i++) {
+                const keyword = shuffled[i];
+                const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
+                const li = document.createElement("li");
+
+                let statusHtml = `<span class="rank-status status-${randomStatus.type}">${randomStatus.icon}</span>`;
+                if (randomStatus.type === "up" || randomStatus.type === "down") {
+                    const diff = Math.floor(Math.random() * 3) + 1;
+                    statusHtml = `<span class="rank-status status-${randomStatus.type}">${randomStatus.icon} ${diff}</span>`;
+                }
+
+                li.innerHTML = `
+                    <span class="rank-num">${i + 1}</span>
+                    <span class="rank-keyword">${keyword}</span>
+                    ${statusHtml}
+                `;
+                container.appendChild(li);
+            }
+        }
+
+        updateRanking();
+        setInterval(updateRanking, 10000);
+    </script>
+</body>
+<script>
+    // --- 기존 실시간 인기 검색어 코드 (유지) ---
+    // (기존 updateRanking 등등의 코드는 그대로 두세요!)
+
+    // --- 새로 추가된 검색 및 자동완성 코드 ---
+    const searchInput = document.getElementById('search-input');
+    const searchBtn = document.getElementById('search-btn');
+    const suggestionsBox = document.getElementById('search-suggestions');
+    const searchContainer = document.getElementById('search-box-container');
+
+    // 검색 가능한 문서 목록 (원하는 대로 추가 가능)
+    const wikiData = [
+        "레벨 0", "아몬드 워터", "엔티티", "스마일러", "노클립",
+        "백룸 탈출", "파티고어", "프론트룸", "레벨 1", "레벨 2",
+        "전방의 방", "MEG", "가짜 창문"
+    ];
+
+    // 1) 페이지 이동 함수
+    function goToSearch() {
+        const query = searchInput.value.trim().replace(/\s+/g, ''); // 띄어쓰기 무시 ("레벨 0" -> "레벨0")
+
+        if (query === "레벨0") {
+            // 레벨0 검색 시 지정된 링크로 이동
+            window.location.href = "http://127.0.0.1:5500/html/con_ex.html";
+        } else if (query !== "") {
+            alert("아직 작성되지 않은 문서입니다: " + searchInput.value);
+            // 만약 검색어별로 다른 페이지를 만들게 되면 여기에 else if 로 추가하시면 됩니다.
+        }
+    }
+
+    // 2) 돋보기 아이콘 클릭 시 검색 실행
+    searchBtn.addEventListener('click', goToSearch);
+
+    // 3) 엔터 키 누를 시 검색 실행
+    searchInput.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            goToSearch();
+        }
+    });
+
+    // 4) 타자 칠 때마다 드롭다운에 일치하는 단어 보여주기
+    searchInput.addEventListener('input', function () {
+        const val = this.value.trim().replace(/\s+/g, '');
+        suggestionsBox.innerHTML = ''; // 드롭다운 초기화
+
+        if (val.length > 0) {
+            // 입력한 글자가 포함된 단어 찾기 (띄어쓰기 무시)
+            const filtered = wikiData.filter(item =>
+                item.replace(/\s+/g, '').includes(val)
+            );
+
+            if (filtered.length > 0) {
+                suggestionsBox.style.display = 'block';
+                filtered.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item; // 예: "레벨 0" 표시
+
+                    // 드롭다운에서 단어를 클릭했을 때
+                    li.addEventListener('click', function () {
+                        searchInput.value = item;
+                        suggestionsBox.style.display = 'none';
+                        goToSearch(); // 클릭하면 바로 이동하게 하려면 활성화
+                    });
+
+                    suggestionsBox.appendChild(li);
+                });
+            } else {
+                suggestionsBox.style.display = 'none'; // 일치하는 거 없으면 닫기
+            }
+        } else {
+            suggestionsBox.style.display = 'none'; // 지워서 빈칸되면 닫기
+        }
+    });
+
+    // 5) 검색창 바깥 아무데나 클릭하면 드롭다운 닫히게 하기
+    document.addEventListener('click', function (e) {
+        if (!searchContainer.contains(e.target)) {
+            suggestionsBox.style.display = 'none';
+        }
+    });
+</script>
+
+</html>

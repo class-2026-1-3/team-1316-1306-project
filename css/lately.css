@@ -1,0 +1,237 @@
+/* 공통 초기화 및 기본 폰트 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    font-family: "Noto Sans KR", sans-serif;
+    color: white;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* 상단 내비게이션 바 (위키 공통) */
+.navbar {
+    height: 60px;
+    background: #32343b;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 60px;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.logo i {
+    font-size: 31px;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.menu li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.menu li:hover {
+    opacity: 0.8;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.random-btn {
+    width: 40px;
+    height: 40px;
+    margin-left: 40px;
+    border: none;
+    border-radius: 6px;
+    background: #000;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.search-box {
+    width: 330px;
+    height: 40px;
+    background: #000;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.search-box input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 16px;
+}
+
+.search-box input::placeholder {
+    color: #a0a0a0;
+}
+
+.search-box i {
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.nav-icon {
+    font-size: 23px;
+    cursor: pointer;
+}
+
+/* 메인 레이아웃 */
+.main {
+    width: 100%;
+    min-height: 1000px;
+    padding-top: 50px;
+    display: flex;
+    justify-content: center; /* 표를 화면 중앙에 정렬 */
+}
+
+/* 최근 변경기록 전용 컨테이너 */
+.recent-container {
+    width: 80%; /* 화면을 넓게 사용 */
+    max-width: 1200px;
+    background-color: #32343b;
+    border: 1px solid rgb(88, 84, 84);
+    border-radius: 10px;
+    padding: 40px;
+}
+
+.recent-container h1 {
+    font-size: 30px;
+    border-bottom: 2px solid rgb(88, 84, 84);
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+}
+
+.recent-desc {
+    font-size: 14px;
+    color: #a0a0a0;
+    margin-bottom: 30px;
+}
+
+/* 최근 변경 표 스타일 */
+.recent-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.recent-table th, 
+.recent-table td {
+    padding: 15px 10px;
+    border-bottom: 1px solid #444;
+}
+
+.recent-table th {
+    background-color: #232428;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.recent-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.recent-table a {
+    color: #64b5f6;
+    font-weight: bold;
+}
+
+.recent-table a:hover {
+    text-decoration: underline;
+}
+
+/* 열 너비 비율 조정 */
+.col-doc { width: 45%; }
+.col-status { width: 20%; }
+.col-user { width: 20%; color: #e0e0e0; }
+.col-time { width: 15%; color: #a0a0a0; font-size: 14px; }
+
+/* 상태 뱃지 (신설, 수정, 삭제) */
+.badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #000;
+    margin-right: 8px;
+}
+
+.badge-new { background-color: #4caf50; color: white; }
+.badge-edit { background-color: #ff9800; color: white; }
+.badge-delete { background-color: #f44336; color: white; }
+
+/* 글자 수 변경 표시 (+, -) */
+.diff {
+    font-size: 13px;
+    font-weight: bold;
+}
+.diff-plus { color: #4caf50; }
+.diff-minus { color: #f44336; }
+/* 검색어 자동완성 드롭다운 스타일 */
+.search-suggestions {
+    display: none; /* 기본적으로는 숨김 */
+    position: absolute;
+    top: 50px; /* 검색창 바로 아래에 위치 */
+    left: 0;
+    width: 100%;
+    background-color: #232428;
+    border: 1px solid rgb(88, 84, 84);
+    border-radius: 6px;
+    list-style: none;
+    padding: 5px 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.search-suggestions li {
+    padding: 10px 15px;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+}
+
+.search-suggestions li:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}

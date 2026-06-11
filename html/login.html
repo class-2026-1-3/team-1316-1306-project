@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M.E.G. 요원 인증</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+
+<body>
+
+    <div class="login-container">
+        <div class="login-header">
+            <i class="fa-solid fa-diagram-project login-logo"></i>
+            <h1 id="header-title">백룸위키 인트라넷</h1>
+            <p id="header-desc">M.E.G. 인가자 전용 데이터베이스</p>
+        </div>
+
+        <!-- 토글 버튼 영역 -->
+        <div class="form-toggle">
+            <button id="btn-login" class="active">로그인</button>
+            <button id="btn-signup">신규 요원 등록</button>
+        </div>
+
+        <!-- 1. 로그인 폼 -->
+        <form class="auth-form" id="form-login">
+            <div class="input-group">
+                <label for="login-id">요원 ID</label>
+                <div class="input-box">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="login-id" placeholder="ID를 입력하세요" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="login-password">인가 암호</label>
+                <div class="input-box">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="login-password" placeholder="비밀번호를 입력하세요" minlength="8" required>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">접속 승인 요청</button>
+        </form>
+
+        <!-- 2. 회원가입 폼 (처음엔 숨김 처리) -->
+        <form class="auth-form hidden" id="form-signup">
+            <div class="input-group">
+                <label for="signup-id">신규 요원 ID (최소 4자)</label>
+                <div class="input-box">
+                    <i class="fa-solid fa-id-badge"></i>
+                    <input type="text" id="signup-id" placeholder="사용할 ID 입력" minlength="4" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="signup-password">보안 암호 설정 (최소 8자)</label>
+                <div class="input-box">
+                    <i class="fa-solid fa-key"></i>
+                    <input type="password" id="signup-password" placeholder="8자 이상 비밀번호 입력" minlength="8" required>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">요원 등록 승인</button>
+        </form>
+
+        <div class="login-footer" id="login-footer">
+            <a href="http://127.0.0.1:5500/html/ip_error.html">ip_error창 보기</a>
+        </div>
+    </div>
+
+    <script>
+        const btnLogin = document.getElementById('btn-login');
+        const btnSignup = document.getElementById('btn-signup');
+        const formLogin = document.getElementById('form-login');
+        const formSignup = document.getElementById('form-signup');
+        
+        const headerTitle = document.getElementById('header-title');
+        const headerDesc = document.getElementById('header-desc');
+        const footer = document.getElementById('login-footer');
+
+        // 탭 전환: 로그인 클릭 시
+        btnLogin.addEventListener('click', () => {
+            btnLogin.classList.add('active');
+            btnSignup.classList.remove('active');
+            
+            formLogin.classList.remove('hidden');
+            formSignup.classList.add('hidden');
+            
+            headerTitle.textContent = '백룸위키 인트라넷';
+            headerDesc.textContent = 'M.E.G. 인가자 전용 데이터베이스';
+            footer.style.display = 'block';
+        });
+
+        // 탭 전환: 회원가입 클릭 시
+        btnSignup.addEventListener('click', () => {
+            btnSignup.classList.add('active');
+            btnLogin.classList.remove('active');
+            
+            formSignup.classList.remove('hidden');
+            formLogin.classList.add('hidden');
+            
+            headerTitle.textContent = '신규 요원 등록';
+            headerDesc.textContent = '안전한 위키 열람을 위한 권한 생성';
+            footer.style.display = 'none'; // 가입 창에서는 비번찾기 숨김
+        });
+
+        // 제출 시 페이지 이동 로직 (로그인)
+        formLogin.addEventListener('submit', function(e) {
+            e.preventDefault(); // 기본 폼 제출(새로고침) 방지
+            // 아이디/비번 확인 로직이 필요하다면 여기에 작성
+            window.location.href = "http://127.0.0.1:5500/html/wiki.html"; 
+        });
+
+        // 제출 시 페이지 이동 로직 (회원가입)
+        formSignup.addEventListener('submit', function(e) {
+            e.preventDefault(); // 기본 폼 제출 방지
+            // HTML의 minlength="4", minlength="8" 조건이 만족되어야만 이 함수가 실행됩니다.
+            alert("요원 등록이 완료되었습니다. 위키로 이동합니다.");
+            window.location.href = "http://127.0.0.1:5500/html/wiki.html"; 
+        });
+    </script>
+</body>
+
+</html>

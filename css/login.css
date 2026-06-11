@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    font-family: "Noto Sans KR", sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: radial-gradient(circle at center, #1a1b1e 0%, #000 100%);
+}
+
+.login-container {
+    background-color: #232428;
+    border: 1px solid rgb(88, 84, 84);
+    border-radius: 8px;
+    padding: 40px 50px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-logo {
+    font-size: 45px;
+    color: #e0e0e0;
+    margin-bottom: 15px;
+}
+
+.login-header h1 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.login-header p {
+    font-size: 14px;
+    color: #a0a0a0;
+}
+
+/* 💡 추가된 토글 버튼 스타일 */
+.form-toggle {
+    display: flex;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #444;
+}
+
+.form-toggle button {
+    flex: 1;
+    background: none;
+    border: none;
+    color: #777;
+    padding: 12px 0;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.form-toggle button:hover {
+    color: #e0e0e0;
+}
+
+.form-toggle button.active {
+    color: #64b5f6;
+    border-bottom: 2px solid #64b5f6;
+}
+
+/* 폼 숨김 클래스 */
+.hidden {
+    display: none !important;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 13px;
+    color: #a0a0a0;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.input-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-box i {
+    position: absolute;
+    left: 15px;
+    color: #888;
+    font-size: 16px;
+}
+
+.input-box input {
+    width: 100%;
+    background-color: #1a1b1e;
+    border: 1px solid rgb(88, 84, 84);
+    border-radius: 6px;
+    padding: 12px 15px 12px 45px;
+    color: white;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-box input:focus {
+    border-color: #64b5f6;
+}
+
+.input-box input::placeholder {
+    color: #555;
+}
+
+.submit-btn {
+    background-color: #32343b;
+    color: white;
+    border: 1px solid rgb(88, 84, 84);
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: #e0e0e0;
+    color: #000;
+}
+
+.login-footer {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 13px;
+}
+
+.login-footer a {
+    color: #888;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.login-footer a:hover {
+    color: #64b5f6;
+    text-decoration: underline;
+}
