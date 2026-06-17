@@ -15,41 +15,23 @@
 ------------------------------------------------------------------------------------
 프로젝트 구조 설명
 TEAM-1316-1306-PROJECT/
-
 ├── css/
-
 |    ├── con_ex.css
-
 |    ├── ip_error.css
-
 |    ├── lately.css
-
 |    ├── login.css
-
 |    └── wiki.css
-
 |
-
 ├── html/
-
 |    ├── con_ex.html
-
 |    ├── ip_error.html
-
 |    ├── lately.html
-
 |    ├── login.html
-
 |    ├── wiki.html
-
 |
-
 ├── .gitignore
-
 ├── level0.png
-
 ├── README.md
-
 └── test.vuerd.json
 ------------------------------------------------------------------------------------
 구현된 창
