@@ -5,7 +5,7 @@
     "width": 2000,
     "height": 2000,
     "scrollTop": 0,
-    "scrollLeft": -27,
+    "scrollLeft": 0,
     "zoomLevel": 0.9,
     "show": 431,
     "database": 4,
@@ -37,7 +37,7 @@
     ],
     "relationshipIds": [
       "YooZzIPNqIFhCi673G3ez",
-      "aa6gV-l3JxBun1Kj-lv-e"
+      "ythWCa04WpoUr4SckvKAF"
     ],
     "indexIds": [],
     "memoIds": []
@@ -64,15 +64,15 @@
           "NNytz_3EpqIR3w2qvE49-"
         ],
         "ui": {
-          "x": 48.2222,
-          "y": 70.889,
+          "x": 52.6666,
+          "y": -5.7777,
           "zIndex": 2,
           "widthName": 60,
           "widthComment": 60,
           "color": ""
         },
         "meta": {
-          "updateAt": 1781140466921,
+          "updateAt": 1781164242698,
           "createAt": 1780289182313
         }
       },
@@ -86,7 +86,7 @@
           "5xULAKmOE3TqXy-VvZgCV",
           "K_N9IQNZIvIALJqYnkbjI",
           "jiN3j8h4RsM99XSemC8DD",
-          "M1OTluN_K8KCeyDO943t5"
+          "-Z6NS5UPSNPxclio_X44z"
         ],
         "seqColumnIds": [
           "jHa-JmL9XTUcSGJJBicVt",
@@ -97,18 +97,19 @@
           "jiN3j8h4RsM99XSemC8DD",
           "voUN9I0eLtBZ3QVzLLlML",
           "--4RPAIPlW4SwQzC2-4F6",
-          "M1OTluN_K8KCeyDO943t5"
+          "M1OTluN_K8KCeyDO943t5",
+          "-Z6NS5UPSNPxclio_X44z"
         ],
         "ui": {
-          "x": 636.2222,
-          "y": 126.9445,
+          "x": 631.7777,
+          "y": 173.6112,
           "zIndex": 164,
           "widthName": 60,
           "widthComment": 60,
           "color": ""
         },
         "meta": {
-          "updateAt": 1781140473266,
+          "updateAt": 1781164260062,
           "createAt": 1780290409894
         }
       },
@@ -127,15 +128,15 @@
           "asmbwX0AdaNZQctqvRno_"
         ],
         "ui": {
-          "x": 44.4445,
-          "y": 237.7536,
+          "x": 84.4445,
+          "y": 405.5313,
           "zIndex": 165,
           "widthName": 60,
           "widthComment": 60,
           "color": ""
         },
         "meta": {
-          "updateAt": 1781140469663,
+          "updateAt": 1781164245129,
           "createAt": 1781077743915
         }
       }
@@ -510,7 +511,7 @@
         "default": "",
         "options": 8,
         "ui": {
-          "keys": 2,
+          "keys": 0,
           "widthName": 60,
           "widthComment": 60,
           "widthDataType": 60,
@@ -519,6 +520,26 @@
         "meta": {
           "updateAt": 1781140550715,
           "createAt": 1781078020908
+        }
+      },
+      "-Z6NS5UPSNPxclio_X44z": {
+        "id": "-Z6NS5UPSNPxclio_X44z",
+        "tableId": "ICsJJgOT1t4oIIhWSvg9n",
+        "name": "user_id",
+        "comment": "수정한 사람",
+        "dataType": "INT",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 2,
+          "widthName": 60,
+          "widthComment": 60,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1781163987923,
+          "createAt": 1781163971939
         }
       }
     },
@@ -533,8 +554,8 @@
           "columnIds": [
             "EMDWm6AYZ2FPWfaYDyYy6"
           ],
-          "x": 577.2222,
-          "y": 146.889,
+          "x": 581.6666,
+          "y": 70.2223,
           "direction": 2
         },
         "end": {
@@ -542,8 +563,8 @@
           "columnIds": [
             "2ATR8GcIashvxUHGN16y8"
           ],
-          "x": 636.2222,
-          "y": 176.9445,
+          "x": 631.7777,
+          "y": 223.6112,
           "direction": 1
         },
         "meta": {
@@ -605,6 +626,34 @@
         "meta": {
           "updateAt": 1781078020908,
           "createAt": 1781078020908
+        }
+      },
+      "ythWCa04WpoUr4SckvKAF": {
+        "id": "ythWCa04WpoUr4SckvKAF",
+        "identification": false,
+        "relationshipType": 16,
+        "startRelationshipType": 2,
+        "start": {
+          "tableId": "1rSAGfGKcG5e1rQIGM9j-",
+          "columnIds": [
+            "aYYlPc-PfFcv7wdJ92JTJ"
+          ],
+          "x": 552.4445000000001,
+          "y": 469.5313,
+          "direction": 2
+        },
+        "end": {
+          "tableId": "ICsJJgOT1t4oIIhWSvg9n",
+          "columnIds": [
+            "-Z6NS5UPSNPxclio_X44z"
+          ],
+          "x": 631.7777,
+          "y": 323.6112,
+          "direction": 1
+        },
+        "meta": {
+          "updateAt": 1781163971939,
+          "createAt": 1781163971939
         }
       }
     },
