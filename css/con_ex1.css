@@ -1,0 +1,340 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    font-family: "Noto Sans KR", sans-serif;
+    color: white;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.navbar {
+    height: 60px;
+    background: #32343b;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 60px;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.logo i {
+    font-size: 31px;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.menu li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.menu li:hover {
+    opacity: 0.8;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.random-btn {
+    width: 40px;
+    height: 40px;
+    margin-left: 40px;
+    border: none;
+    border-radius: 6px;
+    background: #000;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.search-box {
+    width: 330px;
+    height: 40px;
+    background: #000;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.search-box input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 16px;
+}
+
+.search-box input::placeholder {
+    color: #a0a0a0;
+}
+
+.search-box i {
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.nav-icon {
+    font-size: 23px;
+    cursor: pointer;
+}
+
+.main {
+    width: 100%;
+    height: auto;
+    min-height: 1000px;
+    padding-top: 50px;
+}
+
+.main::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.contact {
+    margin-left: 50px;
+    float: left;
+    width: 60%;
+    height: auto;
+    min-height: 500px;
+    background-color: #32343b;
+    border: 1px solid rgb(88, 84, 84);
+    border-radius: 10px;
+    padding: 40px;
+}
+
+.contact h1 {
+    font-size: 32px;
+    border-bottom: 1px solid rgb(88, 84, 84);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.contact h2 {
+    font-size: 22px;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(88, 84, 84, 0.5);
+    padding-bottom: 8px;
+}
+
+.contact p {
+    text-align: left;
+    color: white;
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.wiki-infobox {
+    float: right;
+    width: 280px;
+    background-color: #232428;
+    border: 1px solid rgb(88, 84, 84);
+    border-radius: 6px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+    overflow: hidden;
+}
+
+.infobox-name {
+    background-color: #1a1b1e;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid rgb(88, 84, 84);
+}
+
+/* 💡 새로 추가된 이미지 관련 CSS */
+.infobox-image {
+    padding: 0;
+    border-bottom: 1px solid rgb(88, 84, 84);
+}
+
+.infobox-image img {
+    width: 100%; /* 너비를 테이블에 꽉 차게 */
+    display: block; /* 하단 틈새 여백 제거 */
+}
+
+.infobox-label {
+    background-color: #2d2f34;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    width: 35%;
+    border-top: 1px solid rgb(88, 84, 84);
+    border-right: 1px solid rgb(88, 84, 84);
+}
+
+.infobox-value {
+    padding: 10px;
+    font-size: 14px;
+    border-top: 1px solid rgb(88, 84, 84);
+}
+
+.wiki-toc {
+    background-color: #232428;
+    border: 1px solid rgb(88, 84, 84);
+    border-radius: 6px;
+    padding: 15px;
+    display: inline-block;
+    min-width: 200px;
+    margin-bottom: 25px;
+}
+
+.toc-title {
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 10px;
+    text-align: center;
+    border-bottom: 1px solid rgb(88, 84, 84);
+    padding-bottom: 5px;
+}
+
+.wiki-toc ul {
+    list-style: none;
+}
+
+.wiki-toc li {
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.wiki-toc a {
+    color: #64b5f6;
+}
+
+.wiki-toc a:hover {
+    text-decoration: underline;
+}
+
+.mvd {
+    margin-right: 50px;
+    float: right;
+    width: 25%;
+    height: auto;
+    background-color: #32343b;
+    border: 1px solid rgb(88, 84, 84);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.realtime-header {
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid rgb(88, 84, 84);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.realtime-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.realtime-list li {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid rgb(88, 84, 84);
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.realtime-list li:last-child {
+    border-bottom: none;
+}
+
+.realtime-list li:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.rank-num {
+    font-weight: bold;
+    width: 25px;
+}
+
+.rank-keyword {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rank-status {
+    font-size: 12px;
+    width: 30px;
+    text-align: right;
+}
+
+.status-up { color: #f44336; }
+.status-down { color: #2196f3; }
+.status-keep { color: #9e9e9e; }
+.status-new { color: #4caf50; font-weight: bold; }
+/* 검색어 자동완성 드롭다운 스타일 */
+.search-suggestions {
+    display: none; /* 기본적으로는 숨김 */
+    position: absolute;
+    top: 50px; /* 검색창 바로 아래에 위치 */
+    left: 0;
+    width: 100%;
+    background-color: #232428;
+    border: 1px solid rgb(88, 84, 84);
+    border-radius: 6px;
+    list-style: none;
+    padding: 5px 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.search-suggestions li {
+    padding: 10px 15px;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+}
+
+.search-suggestions li:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
