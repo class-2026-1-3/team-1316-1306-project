@@ -1,0 +1,26 @@
+{
+  "name": "team-1316-1306-project",
+  "version": "1.0.0",
+  "description": "프로젝트 제목 : 백룸위키",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/class-2026-1-3/team-1316-1306-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/class-2026-1-3/team-1316-1306-project/issues"
+  },
+  "homepage": "https://github.com/class-2026-1-3/team-1316-1306-project#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "mysql2": "^3.22.5"
+  }
+}

@@ -47,5 +47,4 @@ function updateRanking() {
 // 페이지 로드 시 최초 실행
 updateRanking();
 
-// 10초마다 자동으로 실검 갱신 (진짜 나무위키처럼 작동)
 setInterval(updateRanking, 10000);
