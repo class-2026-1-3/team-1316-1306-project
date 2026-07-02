@@ -68,61 +68,106 @@
         </form>
 
         <div class="login-footer" id="login-footer">
-            <a href="http://127.0.0.1:5500/html/ip_error.html">ip_error창 보기</a>
+            <a href="ip_error.html">ip_error창 보기</a>
         </div>
     </div>
+
 
     <script>
         const btnLogin = document.getElementById('btn-login');
         const btnSignup = document.getElementById('btn-signup');
         const formLogin = document.getElementById('form-login');
         const formSignup = document.getElementById('form-signup');
-        
         const headerTitle = document.getElementById('header-title');
         const headerDesc = document.getElementById('header-desc');
-        const footer = document.getElementById('login-footer');
 
-        // 탭 전환: 로그인 클릭 시
+        // [기존 코드 유지] 탭 전환: 로그인 클릭 시
         btnLogin.addEventListener('click', () => {
             btnLogin.classList.add('active');
             btnSignup.classList.remove('active');
-            
+
             formLogin.classList.remove('hidden');
             formSignup.classList.add('hidden');
-            
+
             headerTitle.textContent = '백룸위키 인트라넷';
             headerDesc.textContent = 'M.E.G. 인가자 전용 데이터베이스';
-            footer.style.display = 'block';
         });
 
-        // 탭 전환: 회원가입 클릭 시
+        // [기존 코드 유지] 탭 전환: 회원가입 클릭 시
         btnSignup.addEventListener('click', () => {
             btnSignup.classList.add('active');
             btnLogin.classList.remove('active');
-            
+
             formSignup.classList.remove('hidden');
             formLogin.classList.add('hidden');
-            
+
             headerTitle.textContent = '신규 요원 등록';
             headerDesc.textContent = '안전한 위키 열람을 위한 권한 생성';
-            footer.style.display = 'none'; // 가입 창에서는 비번찾기 숨김
         });
 
-        // 제출 시 페이지 이동 로직 (로그인)
-        formLogin.addEventListener('submit', function(e) {
-            e.preventDefault(); // 기본 폼 제출(새로고침) 방지
-            // 아이디/비번 확인 로직이 필요하다면 여기에 작성
-            window.location.href = "http://127.0.0.1:5500/html/wiki.html"; 
+        // ----------------------------------------------------
+        // 1. [로그인] 제출 시 DB 서버와 통신하는 기능
+        // ----------------------------------------------------
+        formLogin.addEventListener('submit', async function (e) {
+            e.preventDefault(); // 새로고침 방지
+
+            const userId = document.getElementById('login-id').value;
+            const userPw = document.getElementById('login-password').value;
+
+            try {
+                // 백엔드 서버의 로그인 주소로 데이터 전송
+                const response = await fetch('http://localhost:3000/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username: userId, password: userPw })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert(result.message); // "로그인 성공!" 메시지창
+                    window.location.href = "wiki.html"; // 메인 화면으로 이동
+                } else {
+                    alert(result.message); // "비밀번호 틀림" 등 에러 메시지창
+                }
+            } catch (error) {
+                console.error("서버 에러:", error);
+                alert("서버가 꺼져있거나 연결할 수 없습니다.");
+            }
         });
 
-        // 제출 시 페이지 이동 로직 (회원가입)
-        formSignup.addEventListener('submit', function(e) {
-            e.preventDefault(); // 기본 폼 제출 방지
-            // HTML의 minlength="4", minlength="8" 조건이 만족되어야만 이 함수가 실행됩니다.
-            alert("요원 등록이 완료되었습니다. 위키로 이동합니다.");
-            window.location.href = "http://127.0.0.1:5500/html/wiki.html"; 
+        // ----------------------------------------------------
+        // 2. [회원가입] 제출 시 DB 서버에 요원을 등록하는 기능
+        // ----------------------------------------------------
+        formSignup.addEventListener('submit', async function (e) {
+            e.preventDefault(); // 새로고침 방지
+
+            const userId = document.getElementById('signup-id').value;
+            const userPw = document.getElementById('signup-password').value;
+
+            try {
+                // 백엔드 서버의 회원가입 주소로 데이터 전송
+                const response = await fetch('http://localhost:3000/api/signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username: userId, password: userPw })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert(result.message); // "신규 요원 등록 완료!"
+                    btnLogin.click(); // 가입 성공하면 자동으로 로그인 탭으로 이동시킴
+                } else {
+                    alert(result.message); // "이미 존재하는 ID입니다" 등 에러 처리
+                }
+            } catch (error) {
+                console.error("서버 에러:", error);
+                alert("서버가 꺼져있거나 연결할 수 없습니다.");
+            }
         });
     </script>
+
 </body>
 
 </html>
